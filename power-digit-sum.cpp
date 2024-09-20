@@ -115,7 +115,7 @@ int main(){
     cin >> b;
 
     if (a.find('-') != string::npos || b.find('-') != string::npos) { //https://www.codecademy.com/resources/docs/cpp/strings/find
-        cout << "Invalid inputs  a: " << a << " b: " << b << endl;
+        cout << "Invalid inputs a: " << a << " b: " << b << endl;
         cout << "a and b must be non-negative integers." << endl;
         return 0;
     }
@@ -131,7 +131,7 @@ int main(){
     //     }
     
     if((power * log(number)) >= (64 * log(2))){
-        cout << " Invalid inputs  a:" << number << " b: " << power << endl;
+        cout << " Invalid inputs a:" << number << " b: " << power << endl;
         cout << "This selection of a and b cannot be computed due to overflow!" << endl;
         return 0;
         
@@ -161,13 +161,13 @@ int main(){
                                         // https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/exceptions.html 
         
         // If input is not a valid number
-        cout << "Invalid inputs  a: " << a << " b: " << b << endl;
+        cout << "Invalid inputs a: " << a << " b: " << b << endl;
         cout << "a and b must be non-negative integers." << endl;
     }
 
     catch (const out_of_range& e) {  
         // If input is out of range for stoull
-        cout << "Invalid inputs  a: " << a << " b: " << b << endl;
+        cout << "Invalid inputs a: " << a << " b: " << b << endl;
         cout << "a and b are too large to be processed." << endl;
     }
       
