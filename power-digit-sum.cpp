@@ -98,9 +98,15 @@ void tests() {
     // Test vector_to_string
     vector<int> test_vec_str = {1, 2, 3, 4, 5};
     assert(vec_to_string(test_vec_str) == "12345");
+    vector<int> test_vec_str = {14, 5, 3, 64, 1};
+    assert(vec_to_string(test_vec_str) == "1453641");
+    vector<int> test_vec_str = {4, 5, 2, 4, 1};
+    assert(vec_to_string(test_vec_str) == "45241");
     
     test_vec_str = {3, 2};
     assert(vec_to_string(test_vec_str) == "32");
+    test_vec_str = {2, 2};
+    assert(vec_to_string(test_vec_str) == "22");
 
     //cout << "tests are successful" << endl;
 
