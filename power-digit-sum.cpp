@@ -140,7 +140,7 @@ int main(){
         
         //Power function
         string digitString = vec_to_string(output);
-        cout << "a: b:" << number << "^"<< power << "= " << digitString << endl;
+        cout << number << "^"<< power << "= " << digitString << endl;
 
         string sumString = to_string(sum); 
         cout << "Sum of Digits: " << sum << endl;
