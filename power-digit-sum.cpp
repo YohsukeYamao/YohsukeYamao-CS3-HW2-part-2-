@@ -114,11 +114,8 @@ int main(){
     cout << "b: ";
     cin >> b;
 
-    cout << a;
-    cout << b;
-
     if (a.find('-') != string::npos || b.find('-') != string::npos) { //https://www.codecademy.com/resources/docs/cpp/strings/find
-        cout << "Invalid inputs  a: " << a << " b: " << b << endl;
+        cout << "Invalid inputs  a: " << a << "   b: " << b << endl;
         cout << "a and b must be non-negative integers." << endl;
         return 0;
     }
@@ -170,7 +167,7 @@ int main(){
 
     catch (const out_of_range& e) {  
         // If input is out of range for stoull
-        cout << " Invalid inputs  a: " << a << "  b: " << b << endl;
+        cout << " Invalid inputs  a: " << a << "   b: " << b << endl;
         cout << "a and b are too large to be processed." << endl;
     }
       
