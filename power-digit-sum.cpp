@@ -79,6 +79,7 @@ void tests() {
     assert(powerFunction(2, 5) == 32);
     assert(powerFunction(6, 4) == 1296);
     assert(powerFunction(12, 4) == 20736);
+    assert(powerFunction(12, -4) == 20736);
     
     // Test vectorize_digits
     vector<int> expected_digits = {3, 2};
@@ -100,6 +101,8 @@ void tests() {
     
     test_vec_str = {3, 2};
     assert(vec_to_string(test_vec_str) == "32");
+
+    //cout << "tests are successful" << endl;
 
 }
 
