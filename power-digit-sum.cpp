@@ -131,7 +131,7 @@ int main(){
     //     }
     
     if((power * log(number)) >= (64 * log(2))){
-        cout << " Invalid inputs  a: " << number << "   b: " << power << endl;
+        cout << "Invalid inputs  a: " << number << "   b: " << power << endl;
         cout << "This selection of a and b cannot be computed due to overflow!" << endl;
         return 0;
         
