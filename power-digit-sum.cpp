@@ -161,7 +161,7 @@ int main(){
                                         // https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/exceptions.html 
         
         // If input is not a valid number
-        cout << "Invalid inputs  a:" << a << "   b: " << b << endl;
+        cout << "Invalid inputs  a: " << a << "   b: " << b << endl;
         cout << "a and b must be non-negative integers." << endl;
     }
 
