@@ -1,0 +1,163 @@
+#include<iostream>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cassert> 
+
+using namespace std;
+
+unsigned long long int powerFunction(unsigned int number, unsigned int power){
+    unsigned long long result = 1;
+    for(unsigned long long int i = 0; i < power; i++){ // loop that performs the pow() function
+        result *= number; // multiplies the result by number 
+
+    }
+            
+     cout << "a: b:" << number << "^"<< power << "= " << result << endl;
+    // a: b: 2^5 = 32
+        
+    return result; // https://www.geeksforgeeks.org/return-statement-in-cpp-with-examples/ 
+                    // looked at if I could return variables 
+}
+
+unsigned long long sumofDigits(unsigned long long result){
+    unsigned long long sum = 0;
+    unsigned long long count = 0; 
+
+    while (result > 0) { // keeps going until the number is not dividable
+        count = result % 10; // finds the modulus of the number to find the sum 
+        result /= 10; // divides the number to keep cycle going
+        sum += count; // adds the sums of the digit 
+         
+    }
+        
+    cout << "Sum Of Digits:" << sum << endl;// prints the sum of the digits
+    // Sum Of Digits: 5
+    return sum;
+}
+
+vector<int>vectorize_digits(unsigned long long n){
+     vector<int> value;  
+        if(n == 0){
+            value.push_back(0);
+        }
+      while (n > 0) {
+         int digit = n % 10;   // Get the last digit
+         value.push_back(digit);  // Add the digit to the vector
+         n = n / 10;  
+                 // Remove the last digit
+        }
+
+     reverse(value.begin(), value.end()); //https://cplusplus.com/reference/algorithm/reverse/
+
+     return value;
+}
+
+int sum_vector(vector<int> v) {
+    int vectorSum = 0;  
+
+    // Iterate through the vector and add each element to sum
+    for (int vectorNum : v) {
+        vectorSum += vectorNum;
+    }
+
+    return vectorSum;  // Return the total sum
+}
+
+string vec_to_string(vector<int> vec){
+    string str = "";
+    
+    for (int digit : vec) {
+        str += to_string(digit);  // Convert each integer to string and append
+    }
+
+    return str;
+}
+
+void tests() {
+    // Test powerFunction and sumofDigits 
+    assert(powerFunction(2, 5) == 32);
+    assert(powerFunction(3, 3) == 27);
+    assert(powerFunction(5, 4) == 625);
+    
+    // Test vectorize_digits
+    vector<int> expected_digits = {3, 2};
+    assert(vectorize_digits(32) == expected_digits);
+    
+    expected_digits = {1, 2, 3, 4, 5};
+    assert(vectorize_digits(12345) == expected_digits);
+
+    // Test sum_vector
+    vector<int> test_vec = {1, 2, 3, 4, 5};
+    assert(sum_vector(test_vec) == 15);
+
+    test_vec = {3, 2};
+    assert(sum_vector(test_vec) == 5);
+
+    // Test vector_to_string
+    vector<int> test_vec_str = {1, 2, 3, 4, 5};
+    assert(vec_to_string(test_vec_str) == "12345");
+    
+    test_vec_str = {3, 2};
+    assert(vec_to_string(test_vec_str) == "32");
+
+    cout << "All tests passed!" << endl;
+}
+
+
+int main(){
+    string a;
+    string b;
+
+
+    cout << "a: ";
+    cin >> a;
+    cout << "b: ";
+    cin >> b;
+
+    try { 
+        unsigned long long number = stoull(a); // https://cplusplus.com/reference/string/stoull/
+        unsigned long long power = stoull(b);
+    
+    if (number < 0 || power < 0 ){
+            cout << "Invalid input Please put in a positive integer" << endl;
+            return 0;
+        }
+    
+    if((power * log(number)) >= (64 * log(2))){
+        cout << "Number is too big" << endl;
+        return 0;
+        
+    }
+        unsigned long long result = powerFunction(number, power);
+        sumofDigits(result);
+        
+        vector<int> output = vectorize_digits(result);
+        
+        cout << "Vectorized digits: ";
+        for (int value : output) {
+            cout << value << ", ";
+        }
+        cout << endl;   
+        
+        int sumResult = sum_vector(output);
+        cout << "The sum of the vector elements is: " << sumResult << endl;
+
+        vector<int> numbers = {1, 2, 3, 4, 5};
+        string digitString = vec_to_string(output);
+        cout << "String: " << digitString << endl;
+        string digitString1 = vec_to_string(numbers);
+        cout << "String: " << digitString1 << endl;
+        tests();
+    }
+    
+    catch (invalid_argument const& e) {  // https://en.cppreference.com/w/cpp/error/invalid_argument 
+                                        // https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/exceptions.html                                               
+        
+        cout << "Invalid input. Please input numbers." << endl;
+    }
+    
+   
+      
+}
