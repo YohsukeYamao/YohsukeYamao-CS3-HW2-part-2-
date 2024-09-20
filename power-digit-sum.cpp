@@ -114,17 +114,25 @@ int main(){
     cout << "b: ";
     cin >> b;
 
+    if (a.find('-') != string::npos || b.find('-') != string::npos) { //https://www.codecademy.com/resources/docs/cpp/strings/find
+        cout << "Invalid inputs  a: " << a << "  b: " << b << endl;
+        cout << "a and b must be non-negative integers." << endl;
+        return 0;
+    }
+    
     try { 
         unsigned long long number = stoull(a); // https://cplusplus.com/reference/string/stoull/
         unsigned long long power = stoull(b);
     
-    if (number < 0 || power < 0 ){
-            cout << "Invalid input Please put in a positive integer" << endl;
-            return 0;
-        }
+    // if (number < 0 || power < 0 ){
+    //         cout << " Invalid inputs  a:" << number << " b: " << power << endl;
+    //         cout << "a and b must be non-negative integers." << endl;
+    //         return 0;
+    //     }
     
     if((power * log(number)) >= (64 * log(2))){
-        cout << "Number is too big" << endl;
+        cout << " Invalid inputs  a:" << number << " b: " << power << endl;
+        cout << "This selection of a and b cannot be computed due to overflow!" << endl;
         return 0;
         
     }
@@ -140,20 +148,30 @@ int main(){
         
         //Power function
         string digitString = vec_to_string(output);
-        cout << number << "^"<< power << "= " << digitString << endl;
+        cout << number << "^"<< power << " = " << digitString << endl;
 
         string sumString = to_string(sum); 
-        cout << "Sum of Digits: " << sum << endl;
+        cout << "Sum Of Digits: " << sum << endl;
 
         
         tests();
     }
-    
-    catch (invalid_argument const& e) {  // https://en.cppreference.com/w/cpp/error/invalid_argument 
-                                        // https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/exceptions.html                                               
+
+    catch (const invalid_argument& e) {  // https://en.cppreference.com/w/cpp/error/invalid_argument 
+                                        // https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/exceptions.html 
         
-        cout << "Invalid input. Please input numbers." << endl;
+        // If input is not a valid number
+        cout << "Invalid inputs  a: " << a << "  b: " << b << endl;
+        cout << "a and b must be non-negative integers." << endl;
     }
+
+    catch (const out_of_range& e) {  
+        // If input is out of range for stoull
+        cout << "Invalid inputs  a: " << a << "  b: " << b << endl;
+        cout << "a and b are too large to be processed." << endl;
+    }
+      
+}
 
 // Sam Freed helped me with the Ocus assignment
     
@@ -162,5 +180,3 @@ int main(){
 // c. I found the mistake by looking machine([11, 11, 11, 8],8) the runs_taken_so_far starts much higher than the actual value and is incorrect
 // d. On a scale of 1-10, it was about a 10 it was the best assignment I have ever done (I hope this convinced you to boosts my grade).
    
-      
-}
